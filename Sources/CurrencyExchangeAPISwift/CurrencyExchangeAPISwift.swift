@@ -74,4 +74,72 @@ public class ExchangeCurrency {
         let decoder = JSONDecoder()
         return try decoder.decode(CurrencyRate.self, from: data)
     }
+    
+    
+    // This function retrieves the latest exchange rates for a specified currency
+    final public func getExchange(currency: String,date: Date) async throws -> CurrencyRates {
+        // Ensure the URL is valid, otherwise throw an error
+        guard let url = URL(string: "https://currencyexchangeapi-cs01.onrender.com/\(convertdateToYYYYMMDD(date: date))/\(currency)") else { throw URLError.noURL }
+        
+        // Fetch data from the URL
+        let (data, _) = try await session.data(from: url)
+        
+        // Decode the JSON response into a CurrencyRates object
+        let decoder = JSONDecoder()
+        return try decoder.decode(CurrencyRates.self, from: data)
+    }
+    
+    // This function retrieves the latest exchange rates for a specified currency and amount
+    final public func getExchange(currency: String,date: Date, amount: Float) async throws -> CurrencyRates {
+        // Ensure the URL is valid, otherwise throw an error
+        guard let url = URL(string: "https://currencyexchangeapi-cs01.onrender.com/\(convertdateToYYYYMMDD(date: date))/\(currency)?amount=\(amount)") else { throw URLError.noURL }
+        
+        // Fetch data from the URL
+        let (data, _) = try await session.data(from: url)
+        
+        // Decode the JSON response into a CurrencyRates object
+        let decoder = JSONDecoder()
+        return try decoder.decode(CurrencyRates.self, from: data)
+    }
+    
+    // This function retrieves the latest exchange rates for a specified source and target currency
+    final public func getExchange(currency: String,date: Date, target: String) async throws -> CurrencyRate {
+        // Ensure the URL is valid, otherwise throw an error
+        guard let url = URL(string: "https://currencyexchangeapi-cs01.onrender.com/\(convertdateToYYYYMMDD(date: date))/\(currency)?target=\(target)") else { throw URLError.noURL }
+        
+        // Fetch data from the URL
+        let (data, _) = try await session.data(from: url)
+        
+        // Decode the JSON response into a CurrencyRate object
+        let decoder = JSONDecoder()
+        return try decoder.decode(CurrencyRate.self, from: data)
+    }
+    
+    // This function retrieves the latest exchange rates for a specified source currency, target currency, and amount
+    final public func getExchange(currency: String,date: Date, target: String, amount: Float) async throws -> CurrencyRate {
+        // Ensure the URL is valid, otherwise throw an error
+        guard let url = URL(string: "https://currencyexchangeapi-cs01.onrender.com/\(convertdateToYYYYMMDD(date: date))/\(currency)?target=\(target)&amount=\(amount)") else { throw URLError.noURL }
+        
+        // Fetch data from the URL
+        let (data, _) = try await session.data(from: url)
+        
+        // Decode the JSON response into a CurrencyRate object
+        let decoder = JSONDecoder()
+        return try decoder.decode(CurrencyRate.self, from: data)
+    }
+    
+    public func convertdateToYYYYMMDD(date: Date)->String{
+        // Create a date formatter
+        let dateFormatter = DateFormatter()
+
+        // Set the date format to the desired output format
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        // Create a date object (for example, the current date)
+        let date = Date()
+
+        // Convert the date to the desired string format
+        return(dateFormatter.string(from: date))
+
+    }
 }
