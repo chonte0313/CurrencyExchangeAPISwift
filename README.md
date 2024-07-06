@@ -20,6 +20,19 @@ The `ExchangeCurrency` class provides a set of functions to interact with a Curr
 - Swift 5.0+
 - A network connection to access the Currency Converter API.
 
+## Installation
+
+### Swift Package Manager
+
+#### Adding the Package to an iOS Project in Xcode
+
+1. Open your project in Xcode.
+2. Go to `File` > `Add Packages...`
+3. Enter the repository URL: `https://github.com/chonte0313/CurrencyExchangeAPISwift`
+4. Select the package options according to your project needs.
+5. Click `Add Package`.
+
+
 ## Usage
 
 ### Retrieve a List of Available Currencies
