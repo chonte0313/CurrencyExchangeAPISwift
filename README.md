@@ -1,5 +1,9 @@
 # ExchangeCurrency
 
+[![SwiftUI 2.0](https://img.shields.io/badge/SwiftUI-2.0-orange)](https://developer.apple.com/xcode/swiftui/)
+[![iOS](https://img.shields.io/badge/iOS-14.0-blue)](https://developer.apple.com/ios/)
+[![MIT License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 The `ExchangeCurrency` class provides a set of functions to interact with a Currency Converter API. This API allows you to retrieve a list of available currencies, the latest exchange rates for a specified currency, and the latest exchange rates for a specified source and target currency, with optional amount parameters. The API also supports retrieving historical exchange rates.
 
 ## Features
